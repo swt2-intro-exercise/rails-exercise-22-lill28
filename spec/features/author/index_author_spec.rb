@@ -10,11 +10,12 @@ end
 describe "contents author index page", type: :feature do
     it "should display a table" do
         visit authors_path
-        expect(page).to have_table '#all_authors'
+        expect(page).to have_table
     end
     it "should have a header with Name and Homepage" do
         visit authors_path
-        find('th').text.should include('Name')
-        find('th').text.should include('Homepage')
+        expect(page). to have_selector 'table>tr>th', text: 'Name'
+        expect(page). to have_selector 'table>tr>th', text: 'Homepage'
+
     end
 end
