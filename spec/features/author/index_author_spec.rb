@@ -14,8 +14,11 @@ describe "contents author index page", type: :feature do
     end
     it "should have a header with Name and Homepage" do
         visit authors_path
-        expect(page). to have_selector 'table>tr>th', text: 'Name'
-        expect(page). to have_selector 'table>tr>th', text: 'Homepage'
-
+        expect(page).to have_selector 'table>tr>th', text: 'Name'
+        expect(page).to have_selector 'table>tr>th', text: 'Homepage'
+    end
+    it "should have a link to create new authors" do 
+        visit authors_path
+        expect(page).to  have_link 'New author', href: new_author_path
     end
 end
