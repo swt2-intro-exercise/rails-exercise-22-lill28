@@ -7,7 +7,7 @@ describe "render edit author page", type: :feature do
     end
 end
 
-describe "edit" do
+describe "edit", type: :feature do
     it "should edit data" do
         author = Author.create(first_name:"Frodo", last_name:"Baggins", homepage:"bilbo.baggins@theshire.com")
         visit edit_author_path(author.id)
