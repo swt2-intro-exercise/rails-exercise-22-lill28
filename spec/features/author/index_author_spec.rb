@@ -28,7 +28,6 @@ describe "delete", type: :feature do
         author = Author.create(first_name:"Frodo", last_name:"Baggins", homepage:"bilbo.baggins@theshire.com")
         visit authors_path
         author_count = Author.count
-        puts author_count
         click_link("Delete")
         expect(Author.count).to eq(author_count-1)
     end
