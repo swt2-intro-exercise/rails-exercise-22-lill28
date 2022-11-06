@@ -13,4 +13,8 @@ RSpec.describe Author, type: :model do
     author = Author.new(first_name:"Bilbo", last_name:"Baggins", homepage:"bilbo.baggins@theshire.com")
     expect(author.name).to eq("Bilbo Baggins")
   end
+  it "should be invalid whe last name is an empty string" do
+    author = Author.new(first_name:"Bilbo", last_name:"", homepage:"bilbo.baggins@theshire.com")
+    expect(author).to_not be_valid
+  end
 end
