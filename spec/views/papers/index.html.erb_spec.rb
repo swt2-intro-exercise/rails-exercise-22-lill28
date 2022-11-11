@@ -24,7 +24,17 @@ RSpec.describe "papers/index", type: :view do
     assert_select cell_selector, text: Regexp.new("Title".to_s), count: 2
     assert_select cell_selector, text: Regexp.new("Venue".to_s), count: 2
     assert_select cell_selector, text: Regexp.new(2.to_s), count: 2
-    expect(cell_selector).to  have_link 'Edit Paper', href: edit_paper_path(0)
-    expect(cell_selector).to  have_link 'Edit Paper', href: edit_paper_path(1)
+  end
+end
+
+describe "render index author page", type: :feature do
+
+  it "renders an edit link for each paper" do
+    paper1 = Paper.create(title:"flup", venue:"huiii", year:2)
+    paper2 = Paper.create(title:"flup", venue:"huiii", year:2)
+
+    visit papers_path
+    expect(page).to  have_link 'Edit Paper', href: edit_paper_path(paper1.id)
+    expect(page).to  have_link 'Edit Paper', href: edit_paper_path(paper2.id)
   end
 end
