@@ -26,7 +26,5 @@ RSpec.describe "papers/index", type: :view do
     assert_select cell_selector, text: Regexp.new(2.to_s), count: 2
     expect(cell_selector).to  have_link 'Edit Paper', href: edit_paper_path(0)
     expect(cell_selector).to  have_link 'Edit Paper', href: edit_paper_path(1)
-
-
   end
 end
