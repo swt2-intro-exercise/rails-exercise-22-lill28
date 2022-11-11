@@ -46,7 +46,12 @@ describe "render index paper page", type: :feature do
     paper_count = Paper.count
     click_link('Delete Paper', href: paper_path(paper1.id))
     expect(Paper.count).to eq(paper_count-1)
+  end
 
-
+  it "should handle url parameter year" do
+    paper1 = Paper.create(title:"Huiiii", venue:"huiii", year:1970)
+    paper2 = Paper.create(title:"flup", venue:"Flup", year:1973)
+    visit("/papers?year=1970")
+    expect(page).to have_no_content("Flup")
   end
 end
