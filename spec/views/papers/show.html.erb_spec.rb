@@ -22,7 +22,7 @@ describe "render show paper page", type: :feature do
       author = Author.create(first_name:"Bilbo", last_name:"Baggins", homepage:"bilbo.baggins@theshire.com")
       paper = Paper.create(title:"hululu", venue: "huiiii", year:1234)
       paper.authors<<(author)
-      visit edit_author_path(author.id)
+      visit paper_path(paper.id)
       expect(page).to have_content("Bilbo Baggins")
 
   end

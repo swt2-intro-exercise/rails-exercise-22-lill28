@@ -15,11 +15,10 @@
   </p>
 
   <p>
-    <%= link_to 'Edit Paper', edit_paper_path(paper) %>
-  </p>
+    <strong>Authors:</strong>
+    <% paper.authors.each do |author| %>
+    <p>author.name</p>
+    <% end %>
 
-  <p>
-      <%= link_to 'Delete Paper', paper_path(paper), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
   </p>
-
 </div>
