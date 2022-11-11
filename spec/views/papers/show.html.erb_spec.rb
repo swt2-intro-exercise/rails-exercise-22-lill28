@@ -16,3 +16,14 @@ RSpec.describe "papers/show", type: :view do
     expect(rendered).to match(/2/)
   end
 end
+
+describe "render show paper page", type: :feature do
+  it "should show the full author name" do
+      author = Author.create(first_name:"Bilbo", last_name:"Baggins", homepage:"bilbo.baggins@theshire.com")
+      paper = Paper.create(title:"hululu", venue: "huiiii", year:1234)
+      paper.authors<<(author)
+      visit edit_author_path(author.id)
+      expect(page).to have_content("Bilbo Baggins")
+
+  end
+end
