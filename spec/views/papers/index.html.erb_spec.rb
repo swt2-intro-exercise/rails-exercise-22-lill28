@@ -27,8 +27,7 @@ RSpec.describe "papers/index", type: :view do
   end
 end
 
-describe "render index author page", type: :feature do
-
+describe "render index paper page", type: :feature do
   it "renders an edit link for each paper" do
     paper1 = Paper.create(title:"flup", venue:"huiii", year:2)
     paper2 = Paper.create(title:"flup", venue:"huiii", year:2)
@@ -36,5 +35,18 @@ describe "render index author page", type: :feature do
     visit papers_path
     expect(page).to  have_link 'Edit Paper', href: edit_paper_path(paper1.id)
     expect(page).to  have_link 'Edit Paper', href: edit_paper_path(paper2.id)
+  end
+
+  it "renders a delete link for each paper" do
+    paper1 = Paper.create(title:"flup", venue:"huiii", year:2)
+    paper2 = Paper.create(title:"flup", venue:"huiii", year:2)
+    visit papers_path
+    expect(page).to  have_link 'Delete Paper', href: paper_path(paper1.id)
+    expect(page).to  have_link 'Delete Paper', href: paper_path(paper2.id)
+    paper_count = Paper.count
+    click_link('Delete Paper', href: paper_path(paper1.id))
+    expect(Paper.count).to eq(paper_count-1)
+
+
   end
 end
