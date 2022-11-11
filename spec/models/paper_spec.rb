@@ -19,6 +19,6 @@ RSpec.describe Paper, type: :model do
 
   it "should have an empty list of authors" do
     paper = Paper.new(title:"a title", venue:"a venue", year:"1234")
-    ecpect(paper.authors.size).to eq(0)
+    expect(paper.authors.size).to eq(0)
   end
 end
