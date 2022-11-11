@@ -26,3 +26,11 @@ RSpec.describe "papers/edit", type: :view do
     end
   end
 end
+
+describe "contents", type: :feature do
+  it "should have a multiple select" do
+      paper = Paper.create(title:"Huiiiii", venue:"Hululu", year:1234)
+      visit edit_paper_path(paper.id)
+      find(:select, 'Authors', multiple: true, options: paper.authors)
+  end
+end
