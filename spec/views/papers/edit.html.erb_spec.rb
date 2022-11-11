@@ -31,6 +31,6 @@ describe "contents", type: :feature do
   it "should have a multiple select" do
       paper = Paper.create(title:"Huiiiii", venue:"Hululu", year:1234)
       visit edit_paper_path(paper.id)
-      expect(page.find(:select, name:'author_select')[:multiple]).to be_truthy
+      expect(page.find(:select)[:multiple]).to be_truthy
   end
 end
